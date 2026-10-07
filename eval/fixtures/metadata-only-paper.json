@@ -1,0 +1,7 @@
+{
+  "record_type": "synthetic_fixture",
+  "title": "SYNTHETIC Bio-Z method paper — title and DOI only",
+  "doi": "10.0000/synthetic-metadata-only",
+  "description": "Not a real publication or resolved DOI. Seeded bibliographic row only; no abstract or full text. The request explicitly selects this row via paperId."
+}
+

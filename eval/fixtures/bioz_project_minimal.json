@@ -1,0 +1,7 @@
+{
+  "record_type": "synthetic_fixture",
+  "name": "SYNTHETIC minimal Bio-Z project",
+  "description": "Empty project for the initial-draft contract; no acquired experiment, approved SOP or numeric acquisition settings.",
+  "experiments": []
+}
+

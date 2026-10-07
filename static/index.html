@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="面向柔性电子研发的证据优先型研究助手" />
+    <title>FlexResearch Copilot</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="FlexResearch Copilot home"><span class="brand-mark">F</span><span>FlexResearch<br /><small>Copilot</small></span></a>
+      <nav><a class="active" href="#workspace">研究工作台</a><a href="#evidence">证据库</a><a href="#about">关于项目</a></nav>
+      <span class="status"><i></i> Local demo</span>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="eyebrow">Evidence-first · Flexible electronics R&amp;D</div>
+        <h1>让每一次实验决策<br /><em>都有证据可回溯</em></h1>
+        <p>为柔性光电、智能感知、医疗仿生与集成系统构建的研究工作台。先把文献、方案和数据连接起来，再讨论智能化。</p>
+        <div class="hero-actions"><a class="button primary" href="#workspace">开始研究流程 <span>→</span></a><a class="button ghost" href="#evidence">浏览公开证据</a></div>
+        <div class="principles"><span><b>01</b> 引用可核验</span><span><b>02</b> 数据可复现</span><span><b>03</b> 人类审核在环</span></div>
+      </section>
+
+      <section class="flow-card" aria-label="research workflow">
+        <div class="flow-label">研究闭环</div>
+        <div class="flow"><div><strong>01</strong><span>提出问题</span></div><b>→</b><div><strong>02</strong><span>检索证据</span></div><b>→</b><div><strong>03</strong><span>规划实验</span></div><b>→</b><div><strong>04</strong><span>分析数据</span></div><b>→</b><div><strong>05</strong><span>沉淀资产</span></div></div>
+      </section>
+
+      <section id="assistant" class="assistant-section section">
+        <div class="section-heading"><div><div class="eyebrow">Local evidence assistant</div><h2>从问题开始，连接证据与下一步实验</h2></div><p>该助手只在本机查询已导入资料和公开证据；不会把实验室材料发送给外部模型。</p></div>
+        <div class="assistant-panel"><div><span class="tool-num">研究问题</span><h3>今天要判断什么？</h3><p>例如：如何评估柔性红外器件在弯折后的性能衰减？</p></div><form id="assistant-form"><textarea id="assistant-question" rows="3" maxlength="1200" placeholder="输入研究问题、实验困惑或需要规划的测试…"></textarea><button class="button primary" type="submit">生成证据导航 <span>→</span></button></form></div>
+      </section>
+
+      <section id="workspace" class="workspace section">
+        <div class="section-heading"><div><div class="eyebrow">MVP workspace</div><h2>把研究任务拆成三个可执行模块</h2></div><p>所有结果均保留来源或计算过程。此版本不使用语言模型生成“无证据结论”。</p></div>
+        <div class="tool-grid">
+          <article class="tool-card evidence-card"><span class="tool-num">01 / 文献证据</span><h3>Literature Copilot</h3><p>从公开来源中定位方向、成果与可追溯链接。</p><form id="literature-form" class="compact-form"><input id="literature-query" aria-label="检索方向" placeholder="例如：视觉芯片、医疗、Bi2O2Se" /><button type="submit">检索</button></form><div id="literature-results" class="literature-results" aria-live="polite"></div></article>
+          <article class="tool-card planner-card"><span class="tool-num">02 / 实验草案</span><h3>Experiment Planner</h3><p>按研究方向生成可供导师和同门审阅的计划框架。</p><form id="planner-form"><label>研究方向<select id="track"><option>柔性感知</option><option>光电与视觉</option><option>医疗与仿生</option><option>集成系统</option></select></label><label>本次目标<textarea id="goal" rows="3" placeholder="例如：评估一类可拉伸压力传感器的灵敏度与循环稳定性"></textarea></label><button class="button primary" type="submit">生成审阅草案 <span>→</span></button></form></article>
+          <article class="tool-card analyzer-card"><span class="tool-num">03 / 数据分析</span><h3>Data Analyzer</h3><p>识别 I–V、应变—电阻、循环稳定性、光谱响应与通用信号，并把计算结果回写至本地测试台账。</p><form id="analysis-form"><label>关联样品（可选）<select id="analysis-sample"><option value="">不关联样品</option></select></label><label class="dropzone"><input id="csv-file" type="file" accept=".csv,text/csv" /><span class="upload-icon">↑</span><strong>选择测试 CSV</strong><small>支持逗号、分号或制表符分隔</small></label><button class="button dark" type="submit">分析并归档</button></form><a class="demo-link" href="/data/demo_strain_sensor.csv" download>下载示例：应变—电阻 ↗</a><a class="demo-link" href="/data/demo_spectral_responsivity.csv" download>光谱响应 ↗</a></article>
+        </div>
+      </section>
+
+      <section id="output" class="output section" hidden aria-live="polite"></section>
+
+      <section id="vault" class="vault section">
+        <div class="section-heading"><div><div class="eyebrow">Local lab vault</div><h2>把项目与私有资料留在本机</h2></div><p>数据存入本地 SQLite 与项目目录；不上传到外部服务。导入前请遵守课题组保密与数据管理要求。</p></div>
+        <div class="vault-grid">
+          <article class="vault-card"><span class="tool-num">04 / 项目台账</span><h3>Project Registry</h3><form id="project-form" class="vault-form"><label>项目名称<input id="project-name" required maxlength="120" placeholder="例如：柔性近红外视觉器件" /></label><label>研究方向<select id="project-track"><option>柔性感知</option><option>光电与视觉</option><option>医疗与仿生</option><option>集成系统</option></select></label><div class="form-row"><label>负责人<input id="project-owner" maxlength="80" placeholder="姓名或缩写" /></label><label>项目目标<input id="project-objective" maxlength="500" placeholder="一句话目标" /></label></div><button class="button primary" type="submit">建立本地项目 <span>→</span></button></form><div id="project-list" class="registry-list"></div><div class="sample-area"><span class="tool-num">样品追溯</span><form id="sample-form" class="sample-form"><div class="form-row"><label>样品编号<input id="sample-code" required maxlength="80" placeholder="例如：NIR-240701-A" /></label><label>关联项目<select id="sample-project"><option value="">暂不关联</option></select></label></div><label>材料 / 结构<input id="sample-material" maxlength="180" placeholder="例如：AgBiS₂ / PI / Au 电极" /></label><label>工艺备注<input id="sample-process" maxlength="500" placeholder="例如：旋涂参数、封装、退火条件" /></label><div class="sample-submit"><select id="sample-status"><option value="fabricating">制备中</option><option value="testing">测试中</option><option value="archived">已归档</option></select><button class="button primary" type="submit">登记样品 <span>→</span></button></div></form><div id="sample-list" class="registry-list sample-list"></div></div><div class="sample-area"><span class="tool-num">测试台账</span><div id="measurement-list" class="registry-list sample-list"></div></div></article>
+          <article class="vault-card"><span class="tool-num">05 / 私有知识</span><h3>Private Document Vault</h3><p>导入 TXT、Markdown、CSV 或可提取文本的 PDF，按关键词检索，并保留哈希与文件来源。</p><form id="document-form" class="document-form"><input id="document-title" maxlength="160" placeholder="资料标题（可选）" /><label class="dropzone small"><input id="document-file" type="file" accept=".txt,.md,.csv,.pdf,text/plain,text/markdown,text/csv,application/pdf" /><span class="upload-icon">↑</span><strong>选择本地资料</strong><small>最大 8 MB · 扫描 PDF 请先 OCR</small></label><button class="button dark" type="submit">导入本地资料</button></form><form id="private-search-form" class="compact-form private-search"><input id="private-query" aria-label="私有资料检索" placeholder="检索导入资料，例如：弯折、PEDOT、循环" /><button type="submit">检索</button></form><div id="private-results" class="private-results"></div></article>
+        </div>
+      </section>
+
+      <section id="evidence" class="evidence-section section">
+        <div class="section-heading"><div><div class="eyebrow">Public evidence library</div><h2>起步时已纳入的公开证据</h2></div><p>仅作为导航与演示数据。论文全文、实验 SOP 与未发表数据应由实验室自主管理。</p></div>
+        <div id="evidence-list" class="evidence-list"></div>
+      </section>
+    </main>
+    <footer id="about"><span>FlexResearch Copilot · open, local-first research workflow</span><span>Designed for flexible-electronics R&amp;D · <a href="https://www.x-mol.com/groups/iFlex/people/37234" target="_blank" rel="noreferrer">iFlex public profile ↗</a></span></footer>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+

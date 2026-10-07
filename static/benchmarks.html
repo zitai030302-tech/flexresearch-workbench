@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>FlexResearch Benchmark Registry</title><link rel="stylesheet" href="/static/benchmarks.css"/><link rel="stylesheet" href="/static/benchmarks-overrides.css"/></head>
+  <body>
+    <header><a href="/workspace"><span>F</span> FlexResearch</a><div><b>Benchmark Registry</b><small>DOI-VERIFIED PERFORMANCE EVIDENCE</small></div><a href="/library">论文证据库 ↗</a><a href="/workspace">返回研究工作台 ↗</a></header>
+    <main>
+      <section class="hero"><div><span>FLEXIBLE ELECTRONICS EVIDENCE TABLE</span><h1>把“性能很好”变成<br/>可比较、可验证的数据。</h1><p>记录材料、器件、指标、单位、测试条件和 DOI；未验证条目不会被误当作可靠基准。</p></div><aside><b>验证链</b><code>draft → Crossref DOI → verified</code><small>性能数值仍需人工对照论文图表、样本数与测试条件。</small></aside></section>
+      <section class="grid">
+        <article class="card form"><span>01 / ADD EVIDENCE</span><h2>录入基准条目</h2><form id="benchmark-form"><div class="two"><label>材料<input id="material" required placeholder="MXene / PEDOT:PSS"/></label><label>器件类型<input id="device-type" required placeholder="压力传感器"/></label></div><div class="two"><label>指标名称<input id="metric-name" required placeholder="灵敏度"/></label><label>数值 / 单位<div class="value"><input id="metric-value" type="number" step="any" required placeholder="12.5"/><input id="metric-unit" required placeholder="kPa⁻¹"/></div></label></div><label>测试条件<input id="condition" placeholder="0–10 kPa，加载速率…"/></label><label>DOI<input id="doi" placeholder="10.xxxx/xxxxx"/></label><label>证据备注<textarea id="note" rows="3" placeholder="图号、表号、页码或原文证据片段"></textarea></label><button>创建 Draft 条目 →</button></form></article>
+        <article class="card table"><div class="table-head"><div><span>02 / REVIEW & COMPARE</span><h2>性能基准表</h2></div><button id="refresh">刷新</button></div><div id="benchmark-summary" class="benchmark-summary"><p>正在检查可比性…</p></div><div id="benchmark-list"><p>正在加载…</p></div></article>
+      </section>
+    </main>
+    <script src="/static/benchmarks.js"></script>
+  </body>
+</html>
+

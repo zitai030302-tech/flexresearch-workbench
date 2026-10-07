@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlexResearch Protocol Review</title>
+    <link rel="stylesheet" href="/static/protocols.css" />
+  </head>
+  <body>
+    <header><a href="/workspace"><span>F</span> FlexResearch</a><div><b>Protocol Review</b><small>HUMAN-IN-THE-LOOP · AUDITABLE</small></div><a class="back" href="/workspace">返回研究工作台 ↗</a></header>
+    <main>
+      <section class="intro"><div><span>LAB GOVERNANCE LAYER</span><h1>生成建议，不替代实验审批。</h1><p>把 Agent 草案转为可审阅协议：记录方向、指标、风险、审批人和不可覆盖的审计事件。</p></div><aside><b>状态机</b><code>draft → approved / rejected</code><small>已审批记录不可原地改写；修改需要创建新草案。</small></aside></section>
+      <section class="layout"><article class="card create"><span class="kicker">01 / CREATE DRAFT</span><h2>新建实验协议</h2><form id="protocol-form"><label>协议标题<input id="protocol-title" maxlength="160" placeholder="例如：柔性红外器件弯折可靠性评估 v1" /></label><label>研究方向<select id="protocol-track"><option>光电与视觉</option><option>柔性感知</option><option>医疗与仿生</option><option>集成系统</option></select></label><label>研究目标<textarea id="protocol-objective" rows="4" maxlength="1000" placeholder="说明本次要验证的器件、性能指标和边界条件"></textarea></label><button type="submit">创建可审阅草案 →</button></form><p class="hint">系统会自动生成对应方向的步骤、指标和风险清单；正式执行前需由课题组人员审批。</p></article><article class="card registry"><span class="kicker">02 / REVIEW QUEUE</span><h2>协议与审计记录</h2><div id="protocol-list" class="protocol-list"><p>正在加载协议…</p></div></article></section>
+    </main>
+    <script src="/static/protocols.js"></script>
+  </body>
+</html>
+

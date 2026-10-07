@@ -1,0 +1,10 @@
+{
+  "fixture_kind": "synthetic_sop_not_laboratory_protocol",
+  "title": "SYNTHETIC Bio-Z SOP - indexing test only",
+  "pages": [
+    "Methods: record electrode ID and sample identifier. This is a synthetic indexing fixture.",
+    "Calibration: bioimpedance reference resistor is 1250 ohm. Repeat calibration before recording. Synthetic fixture only."
+  ],
+  "scanned_text": "Methods: sample rate 100 Hz. Synthetic raster - OCR is not implemented."
+}
+

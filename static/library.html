@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlexResearch Evidence Library</title>
+    <link rel="stylesheet" href="/static/library.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/workspace"><span>F</span><b>FlexResearch</b></a>
+      <div class="product"><strong>Evidence Library</strong><small>DOI → EVIDENCE CARD → HUMAN REVIEW</small></div>
+      <nav><a href="/workspace">研究工作台</a><a href="/benchmarks">Benchmark</a></nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div><span class="eyebrow">LAB-SHARED LITERATURE OPERATING SYSTEM</span><h1>让每一篇论文都<br />变成可复查的研究资产。</h1><p>从 DOI 导入权威书目信息，拆出带页码/图号的证据卡，再由组内成员审核。系统保存审阅状态、来源定位和可导出的 BibTeX / RIS，而不把“模型说过”当作证据。</p></div>
+        <aside><div><b id="paper-total">0</b><span>篇论文</span></div><div><b id="reviewed-total">0</b><span>已审阅</span></div><div><b id="card-total">0</b><span>张证据卡</span></div><small>所有性能结论仍应回到原文图表、SI 和测试条件。</small></aside>
+      </section>
+      <section class="workflow"><span>01 DOI / 手工录入</span><i>→</i><span>02 定位证据</span><i>→</i><span>03 命名审核</span><i>→</i><span>04 可复用比较</span></section>
+      <section class="workspace">
+        <aside class="controls">
+          <article class="panel import-panel"><span class="section-label">01 / IMPORT</span><h2>导入论文</h2><form id="paper-form"><label>DOI（推荐）<input id="paper-doi" placeholder="10.1038/s41928-..." /></label><div class="divider"><span>或手工补录</span></div><label>论文标题<input id="paper-title" placeholder="无 DOI 时必填" /></label><label>标签<input id="paper-tags" placeholder="MXene, 柔性感知, 可靠性" /></label><label>研究笔记<textarea id="paper-notes" rows="3" placeholder="为什么要纳入、待核查问题…"></textarea></label><button>导入并建立审阅记录 →</button><p class="hint">填写 DOI 时，系统仅向 Crossref 请求公开元数据；实验室文档不会被上传。</p></form></article>
+          <article class="panel card-form"><span class="section-label">02 / ANCHOR</span><h2>创建证据卡</h2><form id="card-form"><label>关联来源<select id="card-source"><option value="">选择论文或本地文档…</option></select></label><label>证据类型<select id="card-type"><option value="result">结果 / 性能</option><option value="method">方法 / 工艺</option><option value="limitation">局限 / 风险</option><option value="comparison">比较 / 基准</option></select></label><label>卡片标题<input id="card-title" required placeholder="例如：弯折 1000 次后保持率" /></label><label>可审阅主张<textarea id="card-claim" required rows="3" placeholder="仅写原文直接支持的结论；避免模型推断。"></textarea></label><label>定位锚点<input id="card-locator" placeholder="Fig. 3c / p. 5 / Table S2 / p. 2" /></label><label>原文摘录<textarea id="card-excerpt" rows="3" placeholder="短摘录或结构化观察；避免粘贴长段原文。"></textarea></label><button>创建 Draft 证据卡 →</button></form></article>
+        </aside>
+        <section class="library-column">
+          <article class="library-head"><div><span class="section-label">03 / TRIAGE</span><h2>组内论文库</h2></div><div class="filters"><input id="paper-search" placeholder="检索标题、作者、标签…" /><select id="paper-status"><option value="">全部状态</option><option value="inbox">inbox</option><option value="reading">reading</option><option value="reviewed">reviewed</option><option value="excluded">excluded</option></select></div></article>
+          <div id="paper-list" class="paper-list"><p class="empty">正在加载论文库…</p></div>
+          <article class="evidence-head"><div><span class="section-label">04 / REVIEW QUEUE</span><h2>证据卡审核队列</h2></div><small>Draft 卡需要命名审核后才适合进入报告或组会材料。</small></article>
+          <div id="card-list" class="card-list"><p class="empty">还没有证据卡。</p></div>
+        </section>
+      </section>
+    </main>
+    <template id="review-dialog-template"><dialog class="review-dialog"><form method="dialog"><h3>记录人工审阅</h3><label>审阅人<input name="reviewer" required placeholder="姓名或缩写" /></label><label>审阅说明<textarea name="note" rows="3" placeholder="核对了哪些图表/条件？"></textarea></label><menu><button value="cancel" class="secondary">取消</button><button value="reading" class="reading">标为阅读中</button><button value="reviewed" class="reviewed">确认已审阅</button><button value="excluded" class="excluded">排除</button></menu></form></dialog></template>
+    <script src="/static/library.js"></script>
+  </body>
+</html>
+

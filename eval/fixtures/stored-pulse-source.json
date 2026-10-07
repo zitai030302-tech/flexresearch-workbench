@@ -1,0 +1,8 @@
+{
+  "kind": "synthetic_analytical_fixture_not_human_data",
+  "description": "Two independently generated channels so wrong-channel selection cannot pass the expected 1.2 Hz peak.",
+  "sample_rate_hz": 100,
+  "points": 1000,
+  "channels": {"ch4": {"frequency_hz": 1.2, "amplitude": 1}, "ch14": {"frequency_hz": 2.4, "amplitude": 3}}
+}
+

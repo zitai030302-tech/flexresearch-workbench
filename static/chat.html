@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlexResearch</title>
+    <link rel="stylesheet" href="/static/chat.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="session-rail">
+        <a class="brand" href="/"><span>F</span><b>FlexResearch</b><small>FLEXIBLE ELECTRONICS</small></a>
+        <button id="new-chat" class="new-chat">＋ 新对话</button>
+        <div class="rail-label">研究会话</div>
+        <nav id="session-list" class="session-list"><small>正在读取…</small></nav>
+        <details class="advanced"><summary>高级工作台</summary><a href="/debug">Agent 运行轨迹</a><a href="/lab">项目与样品</a><a href="/library">论文证据库</a><a href="/benchmarks">性能基准</a><a href="/protocols">协议审核</a><a href="/decisions">实验决策包</a><a href="/provenance">溯源图谱</a></details>
+        <p class="rail-note">研究问题联网检索；本地文件不外发。</p>
+      </aside>
+      <main class="chat-main">
+        <header><div><span class="eyebrow">ONE CONVERSATION · EMBEDDED TOOLS</span><h1 id="chat-title">开始一项研究</h1></div><details class="connection"><summary><span id="provider" class="provider">检查模型…</span></summary><section class="provider-panel"><div class="provider-heading"><b>模型连接</b><small id="key-status">读取中…</small></div><label>API 地址<input id="provider-url" inputmode="url" /></label><label>模型<select id="provider-model"></select><small id="provider-model-note" class="model-note"></small></label><label>自定义模型 ID（可选）<input id="provider-custom-model" placeholder="provider/model" /></label><div class="provider-actions"><button id="save-provider" type="button">验证并应用</button><button id="probe-provider" class="secondary" type="button">重新测试</button></div><small id="provider-feedback" class="provider-feedback"></small><p id="provider-last-probe" class="probe-status"></p><p id="provider-warning"></p><div><b>来源</b><ul id="source-status"></ul></div><p id="key-storage"></p></section></details></header>
+        <section id="thread" class="thread">
+          <article class="welcome"><div class="avatar">FR</div><div><span>FlexResearch</span><h2>你想解决什么？</h2><p>直接提问，或上传 CSV、PDF 与实验记录。需要时再展开来源和检索细节。</p><div class="chips"><button data-prompt="柔性近红外光电探测器弯折 1000 次后，如何设计可靠性评估与文献证据方案？">柔性光电可靠性</button><button data-prompt="MXene 柔性压力传感器的灵敏度应该如何在不同量程和条件下比较？">传感器性能比较</button><button data-prompt="柔性医疗电子长期佩戴的证据、风险和实验设计要点是什么？">医疗电子长期佩戴</button></div></div></article>
+        </section>
+        <form id="composer" class="composer">
+          <input id="attachment" type="file" accept=".csv,.txt,.md,.pdf,text/csv,text/plain,text/markdown,application/pdf" hidden />
+          <label for="attachment" id="attach-label" title="上传 CSV、PDF、TXT 或 Markdown">＋</label>
+          <div class="input-wrap"><textarea id="prompt" rows="2" placeholder="提问，或上传 CSV / PDF 后直接发送…"></textarea><small id="attachment-name">联网检索 · Shift+Enter 换行</small></div>
+          <button id="send" type="submit">发送 <b>↑</b></button>
+        </form>
+      </main>
+    </div>
+    <script src="/static/chat.js"></script>
+  </body>
+</html>
+

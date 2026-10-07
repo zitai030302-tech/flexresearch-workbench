@@ -1,0 +1,15 @@
+services:
+  flexresearch:
+    build: .
+    ports:
+      - "8765:8765"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - flexresearch-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  flexresearch-data:
+

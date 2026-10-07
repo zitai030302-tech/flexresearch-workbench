@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlexResearch Workspace</title>
+    <link rel="stylesheet" href="/static/workspace.css" />
+    <link rel="stylesheet" href="/static/workspace-overrides.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="left-rail">
+        <a class="workspace-brand" href="/"><span>F</span><b>FlexResearch</b><small>RESEARCH OS</small></a>
+        <button id="new-session" class="new-session">＋ 新建研究任务</button>
+        <div class="provider-card"><span>LIVE SOURCES</span><strong id="provider-status">正在检查数据源…</strong><small>Crossref 实时元数据 · OpenAlex / 模型可选</small></div>
+        <div class="rail-heading">研究会话</div>
+        <nav id="session-list" class="session-list"></nav>
+        <div class="rail-footer">本地持久化 · 证据优先<br />不会上传导入的实验室文档</div>
+      </aside>
+
+      <main class="chat-pane">
+        <header class="chat-header"><div><span class="eyebrow">STATEFUL RESEARCH WORKFLOW</span><h1 id="session-title">新研究任务</h1></div><div class="header-actions"><a href="/library" class="report-link">论文证据库 ↗</a><a href="/decisions" class="report-link">实验决策包 ↗</a><a href="/provenance" class="report-link">溯源图谱 ↗</a><a id="report-link" class="report-link" hidden>导出证据报告 ↓</a><a href="/" class="back-link">返回实验室工作台 ↗</a></div></header>
+        <section id="messages" class="messages">
+          <article class="welcome-message"><div class="agent-avatar">FR</div><div><span class="message-label">FlexResearch Conductor</span><h2>从一个研究问题开始。</h2><p>Planner 负责拆解任务，Researcher 调用 Crossref / 可选 OpenAlex 检索实时论文元数据，Source Critic 标注证据边界，Synthesizer 生成可审阅摘要。</p><div class="prompt-chips"><button data-prompt="柔性红外光电探测器在弯折循环后应如何设计可靠性评估？">柔性红外器件可靠性</button><button data-prompt="MXene 基柔性压力传感器近期有哪些可比较的性能指标？">MXene 压力传感</button><button data-prompt="柔性医学电子的长期佩戴测试需要考虑哪些证据和风险？">医疗电子长期佩戴</button></div></div></article>
+        </section>
+        <form id="research-form" class="composer">
+          <textarea id="research-query" rows="3" placeholder="输入研究问题、论文检索主题或实验决策问题…"></textarea>
+          <div class="composer-bar"><label><input id="openalex-toggle" type="checkbox" /> OpenAlex（需配置 Key）</label><label><input id="model-toggle" type="checkbox" /> 兼容模型摘要（需配置 Key）</label><span>Enter 发送 · Shift+Enter 换行</span><button type="submit">开始研究 <b>→</b></button></div>
+        </form>
+      </main>
+
+      <aside class="evidence-rail">
+        <section><div class="panel-heading"><span>执行轨迹</span><i id="run-state">READY</i></div><div id="agent-trace" class="agent-trace"><p>提交问题后显示 Planner、Researcher、Source Critic 与 Synthesizer 的执行证据。</p></div></section>
+        <section class="source-panel"><div class="panel-heading"><span>实时论文候选</span><i id="source-count">0</i></div><div id="source-list" class="source-list"><p>Crossref 返回的论文元数据会出现在这里，含 DOI、期刊、年份和被引次数。</p></div></section>
+        <section class="critic-panel"><div class="panel-heading"><span>Source Critic</span></div><ul id="critic-list"><li>未执行研究任务。</li></ul></section>
+      </aside>
+    </div>
+    <script src="/static/workspace.js"></script>
+    <script src="/static/workspace-enhancements.js"></script>
+  </body>
+</html>
+
